@@ -119,6 +119,208 @@
 
     <!-- Home Page -->
 
+    <!-- Navigation Bar -->
+    <nav class="bg-rose-400 p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+          <a href="#" class="text-white font-bold text-xl">Restaurant App</a>
+        </div>
+        <div class="flex items-center">
+          <a href="#" class="text-white mr-4">Add Category</a>
+          <a href="#" class="text-white mr-4">Add Cuisine</a>
+          <a href="#" class="text-white mr-4">Add User</a>
+          <a href="#" class="text-white">Logout</a>
+        </div>
+      </div>
+    </nav>
+    <!-- End Of Navbar -->
+
+    <!-- Table Cuisine -->
+    <table class="table-auto bg-rose-200 w-full mx-auto">
+      <thead class="text-center">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Image</th>
+          <th>Category</th>
+          <th>Author</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr>
+          <td>1</td>
+          <td>Bakso</td>
+          <td>Bakso Bulat</td>
+          <td>20000</td>
+          <td>
+            <img
+              src="https://www.indonesia.travel/content/dam/indtravelrevamp/en/trip-ideas/the-ultimate-guide-to-must-try-indonesian-food/bakso.jpg"
+              class="w-16 object-cover"
+            />
+          </td>
+          <td>Food</td>
+          <td>test@mail.com</td>
+          <td>
+            <a href="edit-form"><i class="fa-regular fa-pen-to-square"></i></a>
+            <a href="delete-form"><i class="fa-regular fa-trash-can"></i></a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>Bakso</td>
+          <td>Bakso Bulat</td>
+          <td>20000</td>
+          <td>
+            <img
+              src="https://www.indonesia.travel/content/dam/indtravelrevamp/en/trip-ideas/the-ultimate-guide-to-must-try-indonesian-food/bakso.jpg"
+              class="w-16 object-cover"
+            />
+          </td>
+          <td>Food</td>
+          <td>test@mail.com</td>
+          <td>
+            <a href="edit-form"><i class="fa-regular fa-pen-to-square"></i></a>
+            <a href="delete-form"><i class="fa-regular fa-trash-can"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- End Of Table Cuisine -->
+
+    <!-- Table Category -->
+    <table class="table-auto bg-rose-200 w-full mx-auto">
+      <thead class="text-center">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr>
+          <td>1</td>
+          <td>Western</td>
+          <td>
+            <a href="edit-form"><i class="fa-regular fa-pen-to-square"></i></a>
+            <a href="delete-form"><i class="fa-regular fa-trash-can"></i></a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>Korean</td>
+          <td>
+            <a href="edit-form"><i class="fa-regular fa-pen-to-square"></i></a>
+            <a href="delete-form"><i class="fa-regular fa-trash-can"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Add Category Form -->
+    <div class="flex justify-center items-center h-screen bg-rose-200">
+      <div class="w-96 p-6 shadow-lg bg-white rounded-md">
+        <h1 class="text-3xl block text-center font-semibold">
+          Add New Category
+        </h1>
+        <hr class="mt-3" />
+        <div class="mt-3">
+          <label for="categoryName" class="block text-base mb-2"
+            >Category Name</label
+          >
+          <input
+            type="text"
+            id="categoryName"
+            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+            placeholder="Enter Category Name"
+          />
+        </div>
+        <div class="mt-5">
+          <button
+            type="submit"
+            class="border-2 border-rose-300 bg-rose-500 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-rose-500 font-semibold"
+          >
+            Add New Category
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- End Of Add Category Form-->
+
+    <!-- Add Cuisine Form -->
+    <div class="flex justify-center items-center h-screen bg-rose-200">
+      <div class="w-96 p-6 shadow-lg bg-white rounded-md">
+        <h1 class="text-3xl block text-center font-semibold">
+          Add New Cuisine
+        </h1>
+        <hr class="mt-3" />
+        <div class="mt-3">
+          <label for="cuisineName" class="block text-base mb-2"
+            >Cuisine Name</label
+          >
+          <input
+            type="text"
+            id="cuisineName"
+            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+            placeholder="Enter Cuisine Name"
+          />
+        </div>
+        <div class="mt-3">
+          <label for="cuisineDescription" class="block text-base mb-2"
+            >Description</label
+          >
+          <input
+            type="text"
+            id="cuisineDescription"
+            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+            placeholder="Enter Description"
+          />
+        </div>
+        <div class="mt-3">
+          <label for="cuisinePrice" class="block text-base mb-2">Price</label>
+          <input
+            type="text"
+            id="cuisinePrice"
+            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+            placeholder="Enter Price"
+          />
+        </div>
+        <div class="mt-3">
+          <label for="imageUrl" class="block text-base mb-2">Image URL</label>
+          <input
+            type="text"
+            id="imageUrl"
+            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+            placeholder="Enter Image URL"
+          />
+        </div>
+        <div class="mt-3">
+          <label for="category" class="block text-base mb-2">Category</label>
+          <select
+            id="category"
+            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+          >
+            <option value="category1">Western</option>
+            <option value="category2">Korean</option>
+            <!-- Tambahkan pilihan kategori sesuai kebutuhan -->
+          </select>
+        </div>
+        <div class="mt-5">
+          <button
+            type="submit"
+            class="border-2 border-rose-300 bg-rose-500 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-rose-500 font-semibold"
+          >
+            Add New Cuisine
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- End Of Add Cuisine Form -->
+
     <!-- Search Bar -->
     <div></div>
 
@@ -225,7 +427,9 @@
       </div>
 
       <!-- card 5 -->
-      <div class="max-w-sm rounded overflow-hidden shadow-lg mt-3 ml-4 mb-4">
+      <div
+        class="max-w-sm rounded overflow-hidden shadow-lg mt-3 ml-4 mr-4 mb-4"
+      >
         <img
           class="w-full"
           src="https://www.indonesia.travel/content/dam/indtravelrevamp/en/trip-ideas/the-ultimate-guide-to-must-try-indonesian-food/bakso.jpg"
