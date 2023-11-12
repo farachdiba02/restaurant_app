@@ -8,7 +8,7 @@ const FormCuisine = () => {
   const [price, setPrice] = useState(0);
   const [imgUrl, setImgUrl] = useState("");
   const [categoryId, setCategoryId] = useState("");
-  const [authorId, setAuthorId] = useState("");
+  // const [authorId, setAuthorId] = useState("");
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
 
@@ -41,6 +41,7 @@ const FormCuisine = () => {
     e.preventDefault();
     const BASE_URL = "http://localhost:3000";
     try {
+      const authorId = localStorage.getItem("authorId");
       const access_token = localStorage.getItem("access_token");
       const response = await axios.post(
         `${BASE_URL}/cuisines`,
@@ -59,7 +60,7 @@ const FormCuisine = () => {
         }
       );
       navigate("/home");
-      console.log(response, "<<<Response");
+      // console.log(response, "<<<Response");
     } catch (error) {
       console.error(error);
     }
@@ -156,14 +157,14 @@ const FormCuisine = () => {
             <label htmlFor="authorId" className="block text-base mb-2">
               Author
             </label>
-            <input
+            {/* <input
               type="number"
               id="authorId"
               className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
               placeholder="Enter Author username"
               value={authorId}
               onChange={(e) => setAuthorId(e.target.value)}
-            />
+            /> */}
           </div>
           <div className="mt-5">
             <button

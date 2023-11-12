@@ -1,5 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 const NavigationBar = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("access_token");
+    navigate("/login");
+  };
   return (
     <nav className="bg-rose-400 p-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -9,6 +14,13 @@ const NavigationBar = () => {
           </a>
         </div>
         <div className="flex items-center">
+          <NavLink
+            className="text-white mr-4"
+            to="/home"
+            style={{ fontWeight: "bold" }}
+          >
+            All Cuisines
+          </NavLink>
           <NavLink className="text-white mr-4" to="/categories">
             Food Category
           </NavLink>
@@ -24,10 +36,10 @@ const NavigationBar = () => {
           {/* <a href="#" className="text-white mr-4">
             Add Category
           </a> */}
-          <a href="#" className="text-white mr-4">
+          <NavLink className="text-white mr-4" to="/add-user">
             Add User
-          </a>
-          <a href="#" className="text-white">
+          </NavLink>
+          <a href="#" className="text-white" onClick={handleLogout}>
             Logout
           </a>
         </div>

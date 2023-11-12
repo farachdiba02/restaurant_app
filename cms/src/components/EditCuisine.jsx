@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import Button from "./ReuseableButton";
 const EditCuisine = () => {
   const BASE_URL = "http://localhost:3000";
   const { id } = useParams();
@@ -36,7 +37,13 @@ const EditCuisine = () => {
           Authorization: `Bearer ${access_token}`,
         },
       });
-      console.log(data, 24);
+      //   console.log(data);
+      setCuisineData(data.data);
+      setName(data.data.name);
+      setDescription(data.data.description);
+      setImgUrl(data.data.imgUrl);
+      setPrice(data.data.price);
+      setCategoryId(data.data.categoryId);
     } catch (error) {
       console.log(error, 26);
     }
@@ -154,12 +161,11 @@ const EditCuisine = () => {
               </select>
             </div>
             <div className="mt-5">
-              <button
+              <Button
                 type="submit"
                 className="border-2 border-rose-300 bg-rose-500 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-rose-500 font-semibold"
-              >
-                Submit
-              </button>
+                label="Submit"
+              />
             </div>
           </form>
         </div>

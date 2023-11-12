@@ -15,7 +15,7 @@ const Login = () => {
         email,
         password,
       });
-
+      // console.log(response);
       const access_token = response.data.access_token;
       //   console.log(response.data);
       // console.log(access_token, 20);

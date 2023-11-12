@@ -5,6 +5,8 @@ import Category from "../views/Category";
 import FormCuisine from "../components/FormCuisine";
 import FormCategory from "../components/FormCategory";
 import EditCuisine from "../components/EditCuisine";
+import AddUser from "../components/AddUser";
+import FormImg from "../components/FormImg";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,15 @@ const router = createBrowserRouter([
       {
         path: "/edit-cuisine/:id",
         element: <EditCuisine />,
+      },
+      {
+        path: "/add-user",
+        element: <AddUser />,
+      },
+
+      {
+        path: "/form-img/:id",
+        element: <FormImg />,
       },
     ],
   },
