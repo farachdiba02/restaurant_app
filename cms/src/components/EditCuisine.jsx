@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "./ReuseableButton";
+import BASE_URL from "../../static";
 const EditCuisine = () => {
-  const BASE_URL = "http://localhost:3000";
   const { id } = useParams();
   const [cuisineData, setCuisineData] = useState({});
   const [name, setName] = useState("");
@@ -14,15 +14,18 @@ const EditCuisine = () => {
   const [categoryId, setCategoryId] = useState("");
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
+  const access_token = localStorage.getItem("access_token");
 
   const fetchCategories = async () => {
     try {
-      const access_token = localStorage.getItem("access_token");
-      const { data } = await axios.get(`${BASE_URL}/category`, {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      });
+      const { data } = await axios.get(
+        `${BASE_URL}/apis/restaurant-app/categories`,
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        }
+      );
       setCategories(data.data);
     } catch (error) {
       console.log(error);
@@ -32,12 +35,15 @@ const EditCuisine = () => {
     try {
       const access_token = localStorage.getItem("access_token");
       //   console.log("ggcgjut");
-      const { data } = await axios.get(`${BASE_URL}/cuisines/${id}`, {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      });
-      //   console.log(data);
+      const { data } = await axios.get(
+        `${BASE_URL}/apis/restaurant-app/cuisines/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        }
+      );
+      // console.log(data);
       setCuisineData(data.data);
       setName(data.data.name);
       setDescription(data.data.description);
@@ -54,16 +60,18 @@ const EditCuisine = () => {
   }, []);
 
   const handleSubmit = async (e) => {
+    console.log(e.target.value);
     e.preventDefault();
     try {
       const access_token = localStorage.getItem("access_token");
       await axios.put(
-        `${BASE_URL}/cuisines/${id}`,
+        `${BASE_URL}/apis/restaurant-app/cuisines/${id}`,
         {
           name,
           description,
           price,
           imgUrl,
+          categoryId,
         },
         {
           headers: {

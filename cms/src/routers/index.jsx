@@ -10,7 +10,7 @@ import FormImg from "../components/FormImg";
 
 const router = createBrowserRouter([
   {
-    path: "/login",
+    path: "/",
     element: <Login />,
     loader: () => {
       const access_token = localStorage.getItem("access_token");
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     loader: () => {
       const access_token = localStorage.getItem("access_token");
       if (!access_token) {
-        return redirect("/login");
+        return redirect("/");
       }
       return null;
     },

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import BASE_URL from "../../static";
 
 const Login = () => {
-  const BASE_URL = "http://localhost:3000";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -11,14 +11,16 @@ const Login = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${BASE_URL}/login`, {
+      const response = await axios.post(`${BASE_URL}/apis/login`, {
         email,
         password,
       });
-      // console.log(response);
-      const access_token = response.data.access_token;
-      //   console.log(response.data);
+      // console.log(response);ho
+      // console.log("berhasil login");
+      const access_token = response.data.data.access_token;
+      // console.log(response.data.data.access_token);
       // console.log(access_token, 20);
+      // console.log(access_token);
       localStorage.setItem("access_token", access_token);
       navigate("/home");
     } catch (error) {

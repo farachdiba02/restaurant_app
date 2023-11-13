@@ -2,9 +2,9 @@ import { useState } from "react";
 import Button from "./ReuseableButton";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import BASE_URL from "../../static";
+console.log(BASE_URL);
 const FormImg = () => {
-  const BASE_URL = "http://localhost:3000";
   const { id } = useParams();
   const [inputFile, setInputFile] = useState(null);
   const navigate = useNavigate();
@@ -15,13 +15,16 @@ const FormImg = () => {
   };
 
   const handleOnSubmit = async (e) => {
+    console.log("hehehe");
     e.preventDefault();
     try {
       const access_token = localStorage.getItem("access_token");
       let formData = new FormData();
       formData.append("imgUrl", inputFile);
+      console.log(formData);
+      console.log(inputFile);
       const response = await axios.patch(
-        `${BASE_URL}/cuisines/${id}`,
+        `${BASE_URL}/apis/restaurant-app/cuisines/${id}`,
         formData,
         {
           headers: {
@@ -29,8 +32,14 @@ const FormImg = () => {
           },
         }
       );
-      //   console.log(response, 32);
-      navigate("/home");
+
+      if (response.status === 200) {
+        console.log("File upload successful");
+        navigate("/home");
+      } else {
+        console.error("File upload failed. Status code:", response.status);
+        // Handle the error accordingly
+      }
     } catch (error) {
       console.log(error);
     }

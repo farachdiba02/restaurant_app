@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BASE_URL from "../../static";
 const TableCuisine = () => {
-  const BASE_URL = "http://localhost:3000";
   const navigate = useNavigate();
   const [cuisines, setCuisines] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,12 +11,17 @@ const TableCuisine = () => {
     try {
       const access_token = localStorage.getItem("access_token");
       // setLoading(true);
+      console.log(access_token);
 
-      const { data } = await axios.get(`${BASE_URL}/cuisines`, {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      });
+      const { data } = await axios.get(
+        `${BASE_URL}/apis/restaurant-app/cuisines`,
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        }
+      );
+      // console.log(data.data, "inii");
       setCuisines(data.data);
       // console.log(data.data);
     } catch (error) {
@@ -37,16 +42,23 @@ const TableCuisine = () => {
   const handleDeleteCuisine = async (cuisineId) => {
     try {
       const access_token = localStorage.getItem("access_token");
-      await axios.delete(`${BASE_URL}/cuisines/${cuisineId}`, {
-        headers: {
-          authorization: `Bearer ${access_token}`,
-        },
-      });
-      const { data } = await axios.get(`${BASE_URL}/cuisines`, {
-        headers: {
-          authorization: `Bearer ${access_token}`,
-        },
-      });
+      await axios.delete(
+        `${BASE_URL}/apis/restaurant-app/cuisines/${cuisineId}`,
+        {
+          headers: {
+            authorization: `Bearer ${access_token}`,
+          },
+        }
+      );
+      const { data } = await axios.get(
+        `${BASE_URL}/apis/restaurant-app/cuisines`,
+        {
+          headers: {
+            authorization: `Bearer ${access_token}`,
+          },
+        }
+      );
+      // console.log(data.data.data);
       setCuisines(data.data);
       // console.log(data);
       navigate("/home");
@@ -79,7 +91,7 @@ const TableCuisine = () => {
               <td>
                 <img src={cuisine.imgUrl} className="w-16 object-cover" />
               </td>
-              <td>{cuisine.Category.name}</td>
+              <td>{cuisine.category}</td>
               <td>{cuisine.User.username}</td>
               <td>
                 <Link onClick={() => handleEditClick(cuisine.id)}>

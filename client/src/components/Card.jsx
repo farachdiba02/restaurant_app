@@ -2,31 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CardCuisine from "./CardCuisine";
 import Loading from "./Loading";
-import axios from "axios";
-const Card = () => {
-  const BASE_URL = "http://localhost:3000";
-  const [cuisines, setCuisines] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get(`${BASE_URL}/pub/cuisines`);
-      // console.log(data.data);
-      setCuisines(data.data);
-    } catch (error) {
-      console.log(error.message);
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+const Card = ({ cuisines, loading, error }) => {
   const navigate = useNavigate();
 
   const handleClick = (id) => {

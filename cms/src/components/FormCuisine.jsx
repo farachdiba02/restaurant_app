@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import BASE_URL from "../../static";
 const FormCuisine = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [categoryId, setCategoryId] = useState("");
   // const [authorId, setAuthorId] = useState("");
@@ -14,20 +14,22 @@ const FormCuisine = () => {
 
   // console.log(name, "<<<name");
   // console.log(description, "<<<descrition");
-  // console.log(price, "<<<price");
+  console.log(price, "<<<price");
   // console.log(imgUrl, "<<<imgUrl");
   // console.log(categoryId, "<<<categoryId");
   // console.log(authorId, "<<<authorId");
   useEffect(() => {
-    const BASE_URL = "http://localhost:3000";
     const fetchCategories = async () => {
       try {
         const access_token = localStorage.getItem("access_token");
-        const { data } = await axios.get(`${BASE_URL}/category`, {
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-          },
-        });
+        const { data } = await axios.get(
+          `${BASE_URL}/apis/restaurant-app/categories`,
+          {
+            headers: {
+              Authorization: `Bearer ${access_token}`,
+            },
+          }
+        );
         setCategories(data.data);
       } catch (error) {
         console.error(error.message);
@@ -39,16 +41,15 @@ const FormCuisine = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const BASE_URL = "http://localhost:3000";
     try {
       const authorId = localStorage.getItem("authorId");
       const access_token = localStorage.getItem("access_token");
       const response = await axios.post(
-        `${BASE_URL}/cuisines`,
+        `${BASE_URL}/apis/restaurant-app/cuisines`,
         {
           name,
           description,
-          price,
+          price: +price,
           imgUrl,
           categoryId,
           authorId,

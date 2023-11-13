@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import BASE_URL from "../../static";
 const TableCategory = () => {
-  const BASE_URL = "http://localhost:3000";
   const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,11 +11,14 @@ const TableCategory = () => {
   const fetchCategory = async () => {
     try {
       const access_token = localStorage.getItem("access_token");
-      const { data } = await axios.get(`${BASE_URL}/category`, {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      });
+      const { data } = await axios.get(
+        `${BASE_URL}/apis/restaurant-app/categories`,
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        }
+      );
       setCategory(data.data);
       // console.log(data);
     } catch (error) {
