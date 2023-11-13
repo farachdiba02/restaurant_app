@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BASE_URL from "../../static";
 
 const FormCategory = () => {
   const [name, setName] = useState("");
@@ -11,7 +12,7 @@ const FormCategory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const BASE_URL = "http://localhost:3000";
+    // const BASE_URL = "http://localhost:3000";
     try {
       const access_token = localStorage.getItem("access_token");
       const response = await axios.post(

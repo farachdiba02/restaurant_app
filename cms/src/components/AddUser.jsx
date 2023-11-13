@@ -2,9 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./ReuseableButton";
+import BASE_URL from "../../static";
 
 const AddUser = () => {
-  const BASE_URL = "http://localhost:3000";
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

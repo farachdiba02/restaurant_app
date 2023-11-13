@@ -15,7 +15,7 @@ const FormImg = () => {
   };
 
   const handleOnSubmit = async (e) => {
-    console.log("hehehe");
+    // console.log("hehehe");
     e.preventDefault();
     try {
       const access_token = localStorage.getItem("access_token");

@@ -14,7 +14,7 @@ const FormCuisine = () => {
 
   // console.log(name, "<<<name");
   // console.log(description, "<<<descrition");
-  console.log(price, "<<<price");
+  // console.log(price, "<<<price");
   // console.log(imgUrl, "<<<imgUrl");
   // console.log(categoryId, "<<<categoryId");
   // console.log(authorId, "<<<authorId");

@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import BASE_URL from "../../static";
 const TableCategory = () => {
   const [category, setCategory] = useState([]);
@@ -28,28 +27,7 @@ const TableCategory = () => {
   useEffect(() => {
     fetchCategory();
   }, []);
-  const handleEditClick = (id) => {
-    navigate(`/edit-category/${id}`);
-  };
-  const handleDeleteCategory = async (categoryId) => {
-    try {
-      const access_token = localStorage.getItem("access_token");
-      await axios.delete(`${BASE_URL}/category/${categoryId}`, {
-        headers: {
-          authorization: `Bearer ${access_token}`,
-        },
-      });
-      const { data } = await axios.get(`${BASE_URL}/category`, {
-        headers: {
-          authorization: `Bearer ${access_token}`,
-        },
-      });
-      // console.log(data);s
-      setCategory(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   // return JSON.stringify(category);
 
   return (

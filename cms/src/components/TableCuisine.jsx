@@ -11,7 +11,7 @@ const TableCuisine = () => {
     try {
       const access_token = localStorage.getItem("access_token");
       // setLoading(true);
-      console.log(access_token);
+      // console.log(access_token);
 
       const { data } = await axios.get(
         `${BASE_URL}/apis/restaurant-app/cuisines`,

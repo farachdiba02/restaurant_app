@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
 import DetailCuisine from "./DetailCuisine";
-import BASE_URL from "../../../cms/static";
+import BASE_URL from "../../static";
 
 const Detail = ({ id }) => {
   // const BASE_URL = "http://localhost:3000"
