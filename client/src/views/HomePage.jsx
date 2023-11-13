@@ -24,9 +24,9 @@ const HomePage = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `${BASE_URL}/apis/pub/restaurant-app/cuisines`
+        `${BASE_URL}/apis/pub/restaurant-app/cuisines${query}`
       );
-      console.log(data.data);
+      // console.log(data.data);
       setCuisines(data.data.query);
     } catch (error) {
       console.log(error.message);
