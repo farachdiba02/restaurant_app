@@ -3,7 +3,7 @@ const NavigationBar = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("access_token");
-    navigate("/login");
+    navigate("/");
   };
   return (
     <nav className="bg-rose-400 p-4">
